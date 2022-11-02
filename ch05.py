@@ -176,7 +176,7 @@ datagen = ImageDataGenerator(
 from keras import models
 
 layer_outputs = [layer.output for layer in model.layers[:8]]  # 하위 8개 층의 출력을 추출한다.
-activation_model = models.Model(inputs=model.input, outputs=layer=outputs)  #입력에 대해 8개 층의 출력을 반환하는 모델을 만든다.
+activation_model = models.Model(inputs=model.input, outputs=layer_outputs)  #입력에 대해 8개 층의 출력을 반환하는 모델을 만든다.
 activations = activation_model.predict(img_tenser)  # 층의 활성화마다 하나씩 8개의 넘파이 배열로 이루어진 리스트를 반환한다.
 
 plt.matshow(first_layer_activation[0, :, :, 19], cmap='viridis') # 첫 번째 층 활성화 중에서 20번째 채널 그리기
